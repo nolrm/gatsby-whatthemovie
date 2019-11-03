@@ -11,7 +11,7 @@ const IndexPage = () => {
   <Layout>
     <SEO title="Home" />
 
-    <h1>Hey!</h1>
+    <h1 class="test">Hey!</h1>
 
     <div class="alert alert-info" role="alert">
       <button type="button" class="btn btn-primary">Primary</button>
