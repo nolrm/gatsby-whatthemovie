@@ -1,58 +1,19 @@
 
+// Import bootstrap and custom variables
 @import "variables";
-
 @import "bootstrap";
 
-// @import "./_variables.scss";
 
-// $font-stack: Helvetica, sans-serif;
-// $primary-color: #666;
-//
-// body {
-//   font: 100% $font-stack;
-//   color: $primary-color;
-// }
+// Import common or generic classes
+@import "base/_generic";
 
 
-// body {
-//   color: $blue;
-// }
+// Import components
+@import "components/_header";
+@import "components/_footer";
+@import "components/_nav";
 
 
-// @import "functions";
-// @import "variables";
-// @import "mixins";
-// @import "root";
-// @import "reboot";
-// @import "type";
-// @import "images";
-// @import "code";
-// @import "grid";
-// @import "tables";
-// @import "forms";
-// @import "buttons";
-// @import "transitions";
-// @import "dropdown";
-// @import "button-group";
-// @import "input-group";
-// @import "custom-forms";
-// @import "nav";
-// @import "navbar";
-// @import "card";
-// @import "breadcrumb";
-// @import "pagination";
-// @import "badge";
-// @import "jumbotron";
-// @import "alert";
-// @import "progress";
-// @import "media";
-// @import "list-group";
-// @import "close";
-// @import "toasts";
-// @import "modal";
-// @import "tooltip";
-// @import "popover";
-// @import "carousel";
-// @import "spinners";
-// @import "utilities";
-// @import "print";
+// Import layouts
+@import "layouts/_home";
+// @import "components/_about";

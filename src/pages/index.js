@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -13,7 +13,7 @@ const IndexPage = () => {
 
     <h1>Hey!</h1>
 
-    <div>
+    <div class="alert alert-info" role="alert">
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-secondary">Secondary</button>
       <button type="button" class="btn btn-success">Success</button>
@@ -22,7 +22,6 @@ const IndexPage = () => {
       <button type="button" class="btn btn-info">Info</button>
       <button type="button" class="btn btn-light">Light</button>
       <button type="button" class="btn btn-dark">Dark</button>
-
       <button type="button" class="btn btn-link">Link</button>
     </div>
 
@@ -55,14 +54,6 @@ const IndexPage = () => {
 
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
-    </div>
-
-    <div>
-      <Link to="/page-2/">Go to page 2</Link>
-    </div>
-
-    <div>
-      <Link to="/third-party/">Third party</Link>
     </div>
 
   </Layout>
