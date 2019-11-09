@@ -5,6 +5,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import Users from "../components/users"
 
+const API_KEY = process.env.OMDB_API_KEY;
+
 class IndexPage extends Component {
   state = {
     loading: false,
@@ -46,12 +48,12 @@ class IndexPage extends Component {
 
   // This data is fetched at run time on the client.
   latestMovie = () => {
-    let apiUrl = process.env.OMDB_API_URL + '?apikey=' + process.env.OMDB_API_KEY + '&i=tt3896198';
+    let API_URL = 'https://www.omdbapi.com/?apikey=' + API_KEY + '&i=tt3896198';
 
     this.setState({ loading: true })
 
     axios
-      .get(apiUrl)
+      .get(API_URL)
       .then(movies => {
         const {
           data: {
