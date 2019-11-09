@@ -28,14 +28,14 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
 
-      <main class="site-main">
-        <div class="container">
+      <main className="site-main">
+        <div className="container">
           {children}
         </div>
       </main>
 
       <footer>
-        <div class="footer container">
+        <div className="footer container">
           <small>Copyright &copy; Your Website {new Date().getFullYear()}</small>
         </div>
       </footer>

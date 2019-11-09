@@ -10,14 +10,22 @@ header {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 1rem 1.0875rem;
-  width: 100%;
+  padding: 1rem 0;
+  // width: 100%;
 
-  @media (min-width: map-get($grid-breakpoints, 'xl')) {
-    max-width: 1600px;
-  }
+  // @media (min-width: map-get($grid-breakpoints, 'xl')) {
+  //   max-width: 1600px;
+  // }
 }
 
 .logo {
   display: inline-block;
+
+  > a {
+    display: block;
+  }
+
+  img {
+    width: 70px;
+  }
 }

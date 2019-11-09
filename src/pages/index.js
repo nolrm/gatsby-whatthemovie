@@ -1,62 +1,78 @@
-import React from "react"
-// import { Link } from "gatsby"
+import React, { Component } from "react"
+import axios from "axios"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+// import Users from "../components/users"
 
-const IndexPage = () => {
+class IndexPage extends Component {
+  state = {
+    loading: false,
+    error: false,
+    movies: {
+      title: '',
+      imdbRating: ''
+    }
+  }
 
-  return (
-  <Layout>
-    <SEO title="Home" />
+  componentDidMount() {
+    this.latestMovie()
+  }
 
-    <h1 class="test">Hey!</h1>
+  render() {
+    const { title, imdbRating } = this.state.movies
 
-    <div class="alert alert-info" role="alert">
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-secondary">Secondary</button>
-      <button type="button" class="btn btn-success">Success</button>
-      <button type="button" class="btn btn-danger">Danger</button>
-      <button type="button" class="btn btn-warning">Warning</button>
-      <button type="button" class="btn btn-info">Info</button>
-      <button type="button" class="btn btn-light">Light</button>
-      <button type="button" class="btn btn-dark">Dark</button>
-      <button type="button" class="btn btn-link">Link</button>
-    </div>
+    return (
+      <Layout>
+        <SEO title="Home" />
 
-    <div>
-      <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
-      </div>
-      <div class="alert alert-secondary" role="alert">
-        A simple secondary alert—check it out!
-      </div>
-      <div class="alert alert-success" role="alert">
-        A simple success alert—check it out!
-      </div>
-      <div class="alert alert-danger" role="alert">
-        A simple danger alert—check it out!
-      </div>
-      <div class="alert alert-warning" role="alert">
-        A simple warning alert—check it out!
-      </div>
-      <div class="alert alert-info" role="alert">
-        A simple info alert—check it out!
-      </div>
-      <div class="alert alert-light" role="alert">
-        A simple light alert—check it out!
-      </div>
-      <div class="alert alert-dark" role="alert">
-        A simple dark alert—check it out!
-      </div>
-    </div>
+        <div style={{ textAlign: "center", width: "600px", margin: "50px auto" }}>
+          <div>
+            {this.state.loading ? (
+              <p>Please hold, movie incoming!</p>
+            ) : title && imdbRating ? (
+              <>
+                <h2>{`${title}`}</h2>
+                <p>{imdbRating}</p>
+              </>
+            ) : (
+              <p>Oh noes, error fetching movie :(</p>
+            )}
+          </div>
+        </div>
+      </Layout>
+    )
+  }
 
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
+  // This data is fetched at run time on the client.
+  latestMovie = () => {
+    let apiUrl = process.env.OMDB_API_URL + '?apikey=' + process.env.OMDB_API_KEY + '&i=tt3896198';
 
-  </Layout>
-)}
+    this.setState({ loading: true })
+
+    axios
+      .get(apiUrl)
+      .then(movies => {
+        const {
+          data: {
+            Title: title,
+            imdbRating
+          },
+        } = movies
+        // console.log(movies)
+        this.setState({
+          loading: false,
+          movies: {
+            ...this.state.movies,
+            title,
+            imdbRating,
+          },
+        })
+      })
+      .catch(error => {
+        this.setState({ loading: false, error })
+      })
+  }
+}
 
 export default IndexPage
