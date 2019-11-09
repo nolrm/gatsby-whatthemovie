@@ -6,6 +6,11 @@ import SEO from "../components/seo"
 // import Users from "../components/users"
 
 const API_KEY = process.env.OMDB_API_KEY;
+console.log('TEST', process.env.NETLIFY)
+
+if (process.env.NETLIFY === 'true') {
+ console.log(API_KEY)
+}
 
 class IndexPage extends Component {
   state = {
