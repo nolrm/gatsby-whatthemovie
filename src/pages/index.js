@@ -5,8 +5,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import Users from "../components/users"
 
-const API_KEY = process.env.OMDB_API_KEY;
+const API_KEY = process.env.GATSBY_API_KEY;
 console.log('TEST', process.env.NETLIFY)
+console.log('TEST', process.env.GATSBY_API_KEY)
+console.log('TEST', process.env)
 
 if (process.env.NETLIFY === 'true') {
  console.log(API_KEY)
