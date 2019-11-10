@@ -4,25 +4,16 @@ import axios from "axios"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import Users from "../components/users"
+import { Link } from "gatsby"
 
-const API_KEY = process.env.GATSBY_API_KEY;
-console.log('NETLIFY - ', process.env.NETLIFY)
-console.log('KEY - ', process.env.GATSBY_API_KEY)
-console.log('URL - ', process.env.GATSBY_API_URL)
-console.log('TEST', process.env)
 
-if (process.env.NETLIFY === 'true') {
- console.log(API_KEY)
-}
+const API_URL = 'https://www.omdbapi.com/?apikey=' + process.env.GATSBY_API_KEY;
 
 class IndexPage extends Component {
   state = {
     loading: false,
     error: false,
-    movies: {
-      title: '',
-      imdbRating: ''
-    }
+    movies: []
   }
 
   componentDidMount() {
@@ -30,24 +21,29 @@ class IndexPage extends Component {
   }
 
   render() {
-    const { title, imdbRating } = this.state.movies
-
     return (
       <Layout>
         <SEO title="Home" />
 
-        <div>
-          {`${process.env.GATSBY_API_URL}/logo.png`}
-        </div>
-
-        <div style={{ textAlign: "center", width: "600px", margin: "50px auto" }}>
-          <div>
+        <div className="movie-container">
+          <div className="row">
             {this.state.loading ? (
               <p>Please hold, movie incoming!</p>
-            ) : title && imdbRating ? (
+            ) : this.state.movies.length > 0 ? (
               <>
-                <h2>{`${title}`}</h2>
-                <p>{imdbRating}</p>
+
+                {this.state.movies.map((item, i) =>
+                  <div className="col-sm-6 col-md-4 col-lg-3" key={i}>
+                    <Link to={`/movie?${item.imdbID}`}>
+                      <div className="movie">
+                        <img className="movie__poster img-fluid" src={item.Poster} alt=""/>
+                        <h4 className="movie__title">{item.Title}</h4>
+                        <p className="movie__desc">Year: {item.Year}</p>
+                      </div>
+                    </Link>
+                  </div>
+                )}
+
               </>
             ) : (
               <p>Oh noes, error fetching movie :(</p>
@@ -60,27 +56,31 @@ class IndexPage extends Component {
 
   // This data is fetched at run time on the client.
   latestMovie = () => {
-    let API_URL = 'https://www.omdbapi.com/?apikey=' + API_KEY + '&i=tt3896198';
-
+    // let API_QUERY = API_URL + '&i=tt3896198';
+    let API_QUERY = API_URL + '&s=avengers';
     this.setState({ loading: true })
-
     axios
-      .get(API_URL)
+      .get(API_QUERY)
       .then(movies => {
-        const {
-          data: {
-            Title: title,
-            imdbRating
-          },
-        } = movies
+        // const {
+        //   data: {
+        //     Poster: poster,
+        //     Title: title,
+        //     Type: type,
+        //     Year: year,
+        //   },
+        // } = movies
+
         // console.log(movies)
+
         this.setState({
           loading: false,
-          movies: {
-            ...this.state.movies,
-            title,
-            imdbRating,
-          },
+          // movies: {
+          //   ...this.state.movies,
+          //   title,
+          //   imdbRating,
+          // },
+          movies: movies.data.Search,
         })
       })
       .catch(error => {
