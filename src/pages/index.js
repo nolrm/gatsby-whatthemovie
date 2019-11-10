@@ -6,8 +6,9 @@ import SEO from "../components/seo"
 // import Users from "../components/users"
 
 const API_KEY = process.env.GATSBY_API_KEY;
-console.log('TEST', process.env.NETLIFY)
-console.log('TEST', process.env.GATSBY_API_KEY)
+console.log('NETLIFY - ', process.env.NETLIFY)
+console.log('KEY - ', process.env.GATSBY_API_KEY)
+console.log('URL - ', process.env.GATSBY_API_URL)
 console.log('TEST', process.env)
 
 if (process.env.NETLIFY === 'true') {
@@ -34,6 +35,10 @@ class IndexPage extends Component {
     return (
       <Layout>
         <SEO title="Home" />
+
+        <div>
+          {`${process.env.GATSBY_API_URL}/logo.png`}
+        </div>
 
         <div style={{ textAlign: "center", width: "600px", margin: "50px auto" }}>
           <div>
