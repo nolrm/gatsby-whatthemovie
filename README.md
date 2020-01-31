@@ -1,34 +1,27 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
-  Gatsby's default starter
+  Gatsby boilerplate
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Test project for gatsby that is deployed to netlify.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Live site is deployed [here](https://whatthemovie.netlify.com/).
+
+### stacks
+
+* GatsbyJS
+* React
+* SCSS
+* Netlify
 
 ## 🚀 Quick start
-
-1.  **Create a Gatsby site.**
-
-    Use the Gatsby CLI to create a new site, specifying the default starter.
-
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
 
 1.  **Start developing.**
 
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd my-default-starter/
+    cd my-project/
     gatsby develop
     ```
 
@@ -81,6 +74,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 12. **`README.md`**: A text file containing useful reference information about your project.
+
 
 ## 🎓 Learning Gatsby
 
