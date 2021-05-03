@@ -1,5 +1,6 @@
 import React from "react"
 // import { Link } from "gatsby"
+ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,7 +19,7 @@ const RandomUsers = (props) => {
         return (
           <div key={i}>
             <p>{userData.name.first} {userData.name.first} {userData.name.last}</p>
-            <img src={userData.picture.medium} alt=""/>
+            <img src={userData.picture.large} alt=""/>
           </div>
         )
       })}

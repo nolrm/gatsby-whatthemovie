@@ -18,6 +18,7 @@ const Header = ({ siteTitle }) => (
         </div>
 
         <div className="site-nav">
+          {/*
           <ul className="nav justify-content-end">
             <li className="nav-item">
               <span className="nav-link">
@@ -35,6 +36,7 @@ const Header = ({ siteTitle }) => (
               </span>
             </li>
           </ul>
+          */}
         </div>
       </div>
     </div>

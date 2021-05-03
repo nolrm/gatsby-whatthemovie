@@ -6,7 +6,6 @@ import SEO from "../components/seo"
 // import Users from "../components/users"
 import { Link } from "gatsby"
 
-
 const API_URL = 'https://www.omdbapi.com/?apikey=' + process.env.GATSBY_API_KEY;
 
 class IndexPage extends Component {
@@ -26,19 +25,18 @@ class IndexPage extends Component {
         <SEO title="Home" />
 
         <div className="movie-container">
-          <div className="row">
             {this.state.loading ? (
               <p>Please hold, movie incoming!</p>
             ) : this.state.movies.length > 0 ? (
               <>
 
                 {this.state.movies.map((item, i) =>
-                  <div className="col-sm-6 col-md-4 col-lg-3" key={i}>
+                  <div className="movie-item" key={i}>
                     <Link to={`/movie?${item.imdbID}`}>
                       <div className="movie">
-                        <img className="movie__poster img-fluid" src={item.Poster} alt=""/>
-                        <h4 className="movie__title">{item.Title}</h4>
-                        <p className="movie__desc">Year: {item.Year}</p>
+                        <img className="movie-poster img-fluid" src={item.Poster} alt=""/>
+                        <div className="movie-title">{item.Title}</div>
+                        <p className="movie-rating">{item.imdbRating}</p>
                       </div>
                     </Link>
                   </div>
@@ -48,7 +46,6 @@ class IndexPage extends Component {
             ) : (
               <p>Oh noes, error fetching movie :(</p>
             )}
-          </div>
         </div>
       </Layout>
     )
